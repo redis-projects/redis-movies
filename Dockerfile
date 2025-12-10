@@ -8,7 +8,7 @@ RUN mvn -f ./pom.xml clean package
 
 
 ## Stage 2 - Package
-FROM openjdk:18-jdk-slim AS runtime
+FROM eclipse-temurin:21-jdk-ubi10-minimal AS runtime
 COPY --from=build /build/spring-redis-search-om-api/target/*.jar app.jar
 COPY --from=build /build/spring-redis-search-om-api/src/main/resources/movies.json movies.json
 EXPOSE 8080
